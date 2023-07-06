@@ -1,0 +1,121 @@
+
+@mixin border_box() {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+@mixin com_box($w, $h, $raiuds, $bg) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $w;
+  height: $h;
+  border-radius: $raiuds;
+  background: $bg;
+}
+@mixin com_box_nofont($w, $h, $raiuds, $bg) {
+  width: $w;
+  height: $h;
+  border-radius: $raiuds;
+  background: $bg;
+}
+@mixin com_font($size, $color, $weight) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+@mixin position_center() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin abs_left_center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin abs_top_center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin fixed_left_center {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@mixin fixed_top_center {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin fixed_center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin prop_out_cover() {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: 0.6);
+  z-index: 501;
+}
+@mixin ellipsis($num) {
+  @if $num == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+  }
+}
+@mixin border_box() {
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+@mixin bg_shadow() {
+  box-shadow: 0px 0px 30px 10px rgba(0,0,0,.1);
+}
+@mixin imgW100 {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@mixin socrll_style {
+  scrollbar-face-color: #F9F9F9;
+  &::-webkit-scrollbar { //滚动条整体部分
+    width: 5px;
+    background-color: #e9eaef;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #e9eaef;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 4px;
+  }
+  &{
+    -ms-scroll-chaining: chained;
+    -ms-overflow-style: none;
+    -ms-content-zooming: zoom;
+    -ms-scroll-rails: none;
+    -ms-content-zoom-limit-min: 100%;
+    -ms-content-zoom-limit-max: 500%;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    -ms-overflow-style: none;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+}
