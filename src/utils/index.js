@@ -268,7 +268,7 @@ export function getTime(type) {
  * @param {boolean} immediate
  * @return {*}
  */
-export function debounce(func, wait, immediate) {
+export function Debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
   const later = function() {
@@ -393,21 +393,30 @@ export function jointArry(Arry, key) {
 }
 
 /**
- * 一个简单的函数防抖
- * @param {Function} fun 需要限制执行频率的函数
- * @param {Number} delay 延迟时间，这段时间过后，才可触发第二次
- */
-export function Debounced(fun, delay) {
-  // 记录上一次函数触发的时间
-  var timer = null
-  var debounced = function() {
-    var ctx = this
-    var args = arguments
-    // 清除上一次延时器
-    if (timer) clearTimeout(timer)
-    timer = setTimeout(function() {
-      fun.apply(ctx, args)
-    }, delay)
+* @desc 函数防抖
+* @param func 函数
+* @param wait 延迟执行毫秒数
+* @param immediate true表示立即执行，false表示非立即执行
+*/
+
+export function debounce(func, wait, immediate = false) {
+  let timeout
+
+  return function() {
+    const context = this
+    const args = arguments
+    const later = function() {
+      timeout = null
+      if (!immediate) {
+        func.apply(context, args)
+      }
+    }
+    const callNow = immediate && !timeout
+
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+    if (callNow) {
+      func.apply(context, args)
+    }
   }
-  return debounced
 }

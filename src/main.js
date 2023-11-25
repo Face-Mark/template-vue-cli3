@@ -8,6 +8,9 @@ import './icons'
 
 Vue.config.productionTip = false
 
+import debounce from '@/directive/debounce'
+debounce.install(Vue)
+
 new Vue({
   router,
   store,
